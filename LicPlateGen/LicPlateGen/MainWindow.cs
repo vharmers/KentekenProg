@@ -3,6 +3,8 @@ using Gtk;
 
 public partial class MainWindow: Gtk.Window
 {	
+	
+	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -12,5 +14,10 @@ public partial class MainWindow: Gtk.Window
 	{
 		Application.Quit ();
 		a.RetVal = true;
+	}
+
+	protected void OnCloseButtonClicked (object sender, System.EventArgs e)
+	{
+		Application.Quit();
 	}
 }

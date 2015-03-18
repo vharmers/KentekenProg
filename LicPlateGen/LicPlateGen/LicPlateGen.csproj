@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E050FB4C-89D2-446D-A1CD-1D999B76BEEB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LicPlateGen</RootNamespace>
     <AssemblyName>LicPlateGen</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +52,16 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="LicensePlate\LicenseChar.cs" />
+    <Compile Include="LicensePlate\LicType.cs" />
+    <Compile Include="LicensePlate\LicensePlate.cs" />
+    <Compile Include="LicensePlate\Template\LicensePlateTemplate.cs" />
+    <Compile Include="LicensePlate\Template\LicenseGroupTemplate.cs" />
+    <Compile Include="LicensePlate\LicTempFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="LicensePlate\" />
+    <Folder Include="LicensePlate\Template\" />
+  </ItemGroup>
 </Project>
