@@ -23,7 +23,7 @@ namespace LicPlateGen
 		
 		public string ConvertDecimalToLicensePlate(int decimalValue)
 		{
-			Int32 modulo;
+			int modulo;
 			
 			for(int groupCounter = 0; groupCounter < template.LicGroups.Length; groupCounter++)
 			{
@@ -33,19 +33,27 @@ namespace LicPlateGen
 				{
 					if (currentGroup.GroupType.Equals (LicType.Number)) 
 					{
-						decimalValue = DivRem (decimalValue, 9, ref modulo);
-						localBuilder.Value.Insert (0, modulo.ToString ());
+						decimalValue = Math.DivRem (decimalValue, 10, out modulo);
+						localBuilder.Value.Insert (0, modulo);
 					} 
 					else //GroupType is Character
 					{
-						decimalValue = DivRem (decimalValue, valitChars.Length, ref modulo);
+						decimalValue = Math.DivRem (decimalValue, valitChars.Length, out modulo);
 						localBuilder.Value.Insert (0, valitChars[modulo]);
 					}
 
 				}
+
+				if (groupCounter < template.LicGroups.Length - 1) 
+				{
+					localBuilder.Value.Insert (0, '-');
+				}
+
 			}
 
-			return localBuilder.Value.ToString ();
+			string generatedLicense = localBuilder.Value.ToString ();
+			localBuilder.Value.Clear ();
+			return generatedLicense;
 		}
 	}
 }

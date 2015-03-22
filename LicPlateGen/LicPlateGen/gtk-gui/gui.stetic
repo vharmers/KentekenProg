@@ -74,7 +74,7 @@ Serie 11</property>
                   <widget class="Gtk.SpinButton" id="CountSpinbutton">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Upper">100</property>
+                    <property name="Upper">50000</property>
                     <property name="PageIncrement">10</property>
                     <property name="StepIncrement">1</property>
                     <property name="ClimbRate">1</property>
@@ -173,6 +173,7 @@ Serie 11</property>
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Genereer</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnGenButtonClicked" />
               </widget>
               <packing>
                 <property name="Position">0</property>

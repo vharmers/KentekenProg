@@ -81,7 +81,7 @@ public partial class MainWindow
 		w2.Expand = false;
 		w2.Fill = false;
 		// Container child hbox20.Gtk.Box+BoxChild
-		this.CountSpinbutton = new global::Gtk.SpinButton (0, 100, 1);
+		this.CountSpinbutton = new global::Gtk.SpinButton (0, 50000, 1);
 		this.CountSpinbutton.CanFocus = true;
 		this.CountSpinbutton.Name = "CountSpinbutton";
 		this.CountSpinbutton.Adjustment.PageIncrement = 10;
@@ -183,6 +183,7 @@ public partial class MainWindow
 		this.DefaultHeight = 300;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+		this.GenButton.Clicked += new global::System.EventHandler (this.OnGenButtonClicked);
 		this.CloseButton.Clicked += new global::System.EventHandler (this.OnCloseButtonClicked);
 	}
 }
