@@ -52,12 +52,11 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="LicensePlate\LicenseChar.cs" />
     <Compile Include="LicensePlate\LicType.cs" />
     <Compile Include="LicensePlate\LicensePlate.cs" />
     <Compile Include="LicensePlate\Template\LicensePlateTemplate.cs" />
     <Compile Include="LicensePlate\Template\LicenseGroupTemplate.cs" />
-    <Compile Include="LicensePlate\LicTempFactory.cs" />
+    <Compile Include="LicensePlate\Template\LicTempFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

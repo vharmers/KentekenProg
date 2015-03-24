@@ -7,6 +7,8 @@ public partial class MainWindow
 	
 	private global::Gtk.Table table3;
 	
+	private global::Gtk.CheckButton DuplicateCheckbox;
+	
 	private global::Gtk.FileChooserButton FileChooser;
 	
 	private global::Gtk.HBox hbox20;
@@ -27,8 +29,6 @@ public partial class MainWindow
 	
 	private global::Gtk.Button GenButton;
 	
-	private global::Gtk.Button InfoButton;
-	
 	private global::Gtk.Button CloseButton;
 
 	protected virtual void Build ()
@@ -43,59 +43,71 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.table3 = new global::Gtk.Table (((uint)(2)), ((uint)(2)), false);
+		this.table3 = new global::Gtk.Table (((uint)(3)), ((uint)(2)), false);
 		this.table3.Name = "table3";
 		this.table3.RowSpacing = ((uint)(6));
 		this.table3.ColumnSpacing = ((uint)(6));
 		// Container child table3.Gtk.Table+TableChild
+		this.DuplicateCheckbox = new global::Gtk.CheckButton ();
+		this.DuplicateCheckbox.CanFocus = true;
+		this.DuplicateCheckbox.Name = "DuplicateCheckbox";
+		this.DuplicateCheckbox.Label = global::Mono.Unix.Catalog.GetString ("Kentekens op duplicaten controleren");
+		this.DuplicateCheckbox.Active = true;
+		this.DuplicateCheckbox.DrawIndicator = true;
+		this.DuplicateCheckbox.UseUnderline = true;
+		this.table3.Add (this.DuplicateCheckbox);
+		global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.table3 [this.DuplicateCheckbox]));
+		w1.TopAttach = ((uint)(2));
+		w1.BottomAttach = ((uint)(3));
+		w1.LeftAttach = ((uint)(1));
+		w1.RightAttach = ((uint)(2));
+		w1.XOptions = ((global::Gtk.AttachOptions)(4));
+		w1.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table3.Gtk.Table+TableChild
 		this.FileChooser = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("Select a File"), ((global::Gtk.FileChooserAction)(0)));
 		this.FileChooser.Name = "FileChooser";
 		this.table3.Add (this.FileChooser);
-		global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.table3 [this.FileChooser]));
-		w1.TopAttach = ((uint)(1));
-		w1.BottomAttach = ((uint)(2));
-		w1.LeftAttach = ((uint)(1));
-		w1.RightAttach = ((uint)(2));
-		w1.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table3 [this.FileChooser]));
+		w2.TopAttach = ((uint)(1));
+		w2.BottomAttach = ((uint)(2));
+		w2.LeftAttach = ((uint)(1));
+		w2.RightAttach = ((uint)(2));
+		w2.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
 		this.hbox20 = new global::Gtk.HBox ();
 		this.hbox20.Name = "hbox20";
 		this.hbox20.Spacing = 6;
 		// Container child hbox20.Gtk.Box+BoxChild
 		this.SerieComboBox = global::Gtk.ComboBox.NewText ();
-		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 1"));
-		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 2"));
-		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 3"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 4"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 5"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 6"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 7"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 8"));
 		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 9"));
-		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 10"));
-		this.SerieComboBox.AppendText (global::Mono.Unix.Catalog.GetString ("Serie 11"));
+		this.SerieComboBox.AppendText ("");
 		this.SerieComboBox.Name = "SerieComboBox";
 		this.hbox20.Add (this.SerieComboBox);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox20 [this.SerieComboBox]));
-		w2.Position = 0;
-		w2.Expand = false;
-		w2.Fill = false;
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox20 [this.SerieComboBox]));
+		w3.Position = 0;
+		w3.Expand = false;
+		w3.Fill = false;
 		// Container child hbox20.Gtk.Box+BoxChild
-		this.CountSpinbutton = new global::Gtk.SpinButton (0, 50000, 1);
+		this.CountSpinbutton = new global::Gtk.SpinButton (0, 1000000000, 1);
 		this.CountSpinbutton.CanFocus = true;
 		this.CountSpinbutton.Name = "CountSpinbutton";
 		this.CountSpinbutton.Adjustment.PageIncrement = 10;
 		this.CountSpinbutton.ClimbRate = 1;
 		this.CountSpinbutton.Numeric = true;
 		this.hbox20.Add (this.CountSpinbutton);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox20 [this.CountSpinbutton]));
-		w3.Position = 1;
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox20 [this.CountSpinbutton]));
+		w4.Position = 1;
 		this.table3.Add (this.hbox20);
-		global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table3 [this.hbox20]));
-		w4.LeftAttach = ((uint)(1));
-		w4.RightAttach = ((uint)(2));
-		w4.XOptions = ((global::Gtk.AttachOptions)(4));
-		w4.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table3 [this.hbox20]));
+		w5.LeftAttach = ((uint)(1));
+		w5.RightAttach = ((uint)(2));
+		w5.XOptions = ((global::Gtk.AttachOptions)(4));
+		w5.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
 		this.label10 = new global::Gtk.Label ();
 		this.label10.Name = "label10";
@@ -103,24 +115,24 @@ public partial class MainWindow
 		this.label10.UseUnderline = true;
 		this.label10.Justify = ((global::Gtk.Justification)(2));
 		this.table3.Add (this.label10);
-		global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table3 [this.label10]));
-		w5.TopAttach = ((uint)(1));
-		w5.BottomAttach = ((uint)(2));
-		w5.XOptions = ((global::Gtk.AttachOptions)(4));
-		w5.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table3 [this.label10]));
+		w6.TopAttach = ((uint)(1));
+		w6.BottomAttach = ((uint)(2));
+		w6.XOptions = ((global::Gtk.AttachOptions)(4));
+		w6.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
 		this.label9 = new global::Gtk.Label ();
 		this.label9.Name = "label9";
 		this.label9.LabelProp = global::Mono.Unix.Catalog.GetString ("   Serie en aantal");
 		this.label9.Justify = ((global::Gtk.Justification)(2));
 		this.table3.Add (this.label9);
-		global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table3 [this.label9]));
-		w6.XOptions = ((global::Gtk.AttachOptions)(0));
-		w6.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table3 [this.label9]));
+		w7.XOptions = ((global::Gtk.AttachOptions)(0));
+		w7.YOptions = ((global::Gtk.AttachOptions)(4));
 		this.vbox1.Add (this.table3);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.table3]));
-		w7.Position = 0;
-		w7.Expand = false;
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.table3]));
+		w8.Position = 0;
+		w8.Expand = false;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 		this.alignment1.Name = "alignment1";
@@ -130,9 +142,9 @@ public partial class MainWindow
 		this.ProgressLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("label6");
 		this.alignment1.Add (this.ProgressLabel);
 		this.vbox1.Add (this.alignment1);
-		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.alignment1]));
-		w9.Position = 1;
-		w9.Fill = false;
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.alignment1]));
+		w10.Position = 1;
+		w10.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.hbox1 = new global::Gtk.HBox ();
 		this.hbox1.Name = "hbox1";
@@ -144,19 +156,8 @@ public partial class MainWindow
 		this.GenButton.UseUnderline = true;
 		this.GenButton.Label = global::Mono.Unix.Catalog.GetString ("Genereer");
 		this.hbox1.Add (this.GenButton);
-		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GenButton]));
-		w10.Position = 0;
-		w10.Expand = false;
-		w10.Fill = false;
-		// Container child hbox1.Gtk.Box+BoxChild
-		this.InfoButton = new global::Gtk.Button ();
-		this.InfoButton.CanFocus = true;
-		this.InfoButton.Name = "InfoButton";
-		this.InfoButton.UseUnderline = true;
-		this.InfoButton.Label = global::Mono.Unix.Catalog.GetString ("Toon info");
-		this.hbox1.Add (this.InfoButton);
-		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.InfoButton]));
-		w11.Position = 1;
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GenButton]));
+		w11.Position = 0;
 		w11.Expand = false;
 		w11.Fill = false;
 		// Container child hbox1.Gtk.Box+BoxChild
