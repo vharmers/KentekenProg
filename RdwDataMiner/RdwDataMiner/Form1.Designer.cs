@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Uitlezen = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Browse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -41,38 +41,39 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(422, 251);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // Uitlezen
             // 
-            this.button1.Location = new System.Drawing.Point(12, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 45);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Tekst file toevoegen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(314, 273);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 45);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Opslaan in de externe database";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Uitlezen.Location = new System.Drawing.Point(164, 273);
+            this.Uitlezen.Name = "Uitlezen";
+            this.Uitlezen.Size = new System.Drawing.Size(120, 45);
+            this.Uitlezen.TabIndex = 1;
+            this.Uitlezen.Text = "Tekst file uitlezen";
+            this.Uitlezen.UseVisualStyleBackColor = true;
+            this.Uitlezen.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Browse
+            // 
+            this.Browse.Location = new System.Drawing.Point(12, 273);
+            this.Browse.Name = "Browse";
+            this.Browse.Size = new System.Drawing.Size(120, 45);
+            this.Browse.TabIndex = 3;
+            this.Browse.Text = "Tekst file toevoegen";
+            this.Browse.UseVisualStyleBackColor = true;
+            this.Browse.Click += new System.EventHandler(this.Browse_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 330);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Browse);
+            this.Controls.Add(this.Uitlezen);
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -83,9 +84,9 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Uitlezen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button Browse;
     }
 }
 

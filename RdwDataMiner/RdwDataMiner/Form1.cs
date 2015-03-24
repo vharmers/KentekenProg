@@ -2,56 +2,75 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Services.Client;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data; // aanmaken reference 
-using MySql.Data.MySqlClient;// aanmaken reference 
+using MySql.Data; 
+using MySql.Data.MySqlClient;
+using System.Net;
+using System.IO; 
 
 namespace RdwDataMiner
 {
     public partial class Form1 : Form
     {
+        List<string> filePath = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Browse_Click_1(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
+            //Create a OpenFileDialog instance to use
+            OpenFileDialog openDialog = new OpenFileDialog();
+            //We select what types are permitted to open
+            openDialog.Filter = "Text Files (*.txt)|*.txt";
+            //A title for the dialogbox
+            openDialog.Title = "Open textfile";
 
-            foreach (var item in listBox1.SelectedItems)
+            //If the user press cancel then end this void
+            if (openDialog.ShowDialog() == DialogResult.Cancel)
             {
-                MessageBox.Show(item.ToString());
+                return;
             }
+
+            //Set public variable ourPath to the current path
+            string ourPath = Path.GetDirectoryName(openDialog.FileName);
+            ourPath = ourPath + "\\" + Path.GetFileName(openDialog.FileName);
+
+            filePath.Add(ourPath);
 
             listBox1.Items.Add("bestand toegevoegd....");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            string MyConString = "SERVER=localhost;" + "DATABASE=testdb;" + "USER=root;";
-
-            MySqlConnection connection = new MySqlConnection(MyConString);
-            MySqlCommand command = connection.CreateCommand();
-            MySqlDataReader Reader;
-
-            command.CommandText = "select * from Kentekens";
-            connection.Open();
-            Reader = command.ExecuteReader();
-
-            while (Reader.Read())
+            try
             {
-                string thisrow = "";
-                for (int i = 0; i < Reader.FieldCount; i++)
-                    thisrow += Reader.GetValue(i).ToString() + ",";
-                listBox1.Items.Add(thisrow);
+                string line = string.Empty;
+                TextReader readFile;
+                if (listBox1.SelectedIndex >= 0)
+                {
+                    readFile = new StreamReader(filePath[listBox1.SelectedIndex]);
+                }
+                else
+                {
+                    readFile = new StreamReader(filePath.Last());
+                }
+                line = readFile.ReadToEnd();
+                MessageBox.Show(line);
+                readFile.Close();
             }
 
-            connection.Close();
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
