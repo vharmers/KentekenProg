@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using Gtk;
 using LicPlateGen;
 
@@ -12,6 +13,8 @@ using LicPlateGen;
 /// </summary>
 public partial class MainWindow: Gtk.Window
 {	
+	private Stopwatch stopwatch = new Stopwatch ();
+
 	/// <summary>
 	/// Initializes a new instance of the <see cref="MainWindow"/> class.
 	/// </summary>
@@ -69,6 +72,7 @@ public partial class MainWindow: Gtk.Window
 					
 			}
 		}
+		//System.IO.File.WriteAllLines (outputFilePath, result);
 		fileTask.Wait ();
 	}
 
@@ -88,6 +92,10 @@ public partial class MainWindow: Gtk.Window
 		return duplicates;
 	}
 
+	/// <summary>
+	/// Displays a dialog which warns the user about duplicate results
+	/// </summary>
+	/// <param name="doubleResults">Double results.</param>
 	private void WarnForDoubleResults(string[] doubleResults)
 	{
 		string dialogMessage = "Operation complete but the folowing duplicates where found:\n";
@@ -146,11 +154,21 @@ public partial class MainWindow: Gtk.Window
 		ProgressLabel.Text = "Genereren";
 		
 		Thread myThread = new Thread (() => {
+
+			stopwatch.Start();
+
 			GenerateAndSavePLates(filePath, plate, plateCount, checkDuplicates);
+
+			stopwatch.Stop();
+			long finalTime = stopwatch.ElapsedMilliseconds;
+			stopwatch.Reset();
+
 			Gtk.Application.Invoke(delegate 
 			{
-				ProgressLabel.Text = "Klaar";
+				ProgressLabel.Text = "Klaar in " + finalTime + " ms";
 			});
+
+
 		}); 
 		myThread.Start ();
 
